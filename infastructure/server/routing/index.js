@@ -18,21 +18,6 @@ function Router(express, config, app) {
         maxAge: config.CACHE_MAX_AGE
     });
 
-
-    // Use the `renderAndCache` utility defined below to serve pages
-    server.get('/', (req, res) => {
-        renderAndCache(req, res, '/')
-    });
-
-    server.get('*', (req, res) => {
-        return handler(req, res)
-    });
-
-    server.listen(3000, (err) => {
-        if (err) throw err;
-        console.log('> Ready on http://localhost' + config.PORT)
-    });
-
     /**
      * @param req
      * @param res
@@ -61,6 +46,20 @@ function Router(express, config, app) {
             })
         ;
     }
+
+    // Use the `renderAndCache` utility defined below to serve pages
+    server.get('/', (req, res) => {
+        renderAndCache(req, res, '/')
+    });
+
+    server.get('*', (req, res) => {
+        return handler(req, res)
+    });
+
+    server.listen(3000, (err) => {
+        if (err) throw err;
+        console.log('> Ready on http://localhost' + config.PORT)
+    });
 
 }
 

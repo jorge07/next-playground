@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "node server.js"
   },
   "dependencies": {
-    "next": "^1.2.3"
+    "express": "^4.14.0",
+    "lru-cache": "^4.0.2",
+    "next": "^2.0.0-beta"
   }
 }

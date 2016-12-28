@@ -6,3 +6,8 @@ RUN
     yarn start
     
 Lol
+
+Dev
+===
+
+    yarn dev

@@ -3,4 +3,6 @@ RUN
 
     yarn install
     
-    yarn build && yarn start
+    yarn start
+    
+Lol

@@ -1,10 +1,3 @@
-const routes = {
-    '/' : {
-        '/'
-    }
-};
-
-
 exports = module.exports = class {
 
     constructor(server, config, app)  {

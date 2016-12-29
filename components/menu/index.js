@@ -1,36 +1,53 @@
+import React from 'react';
 import Link from 'next/link'
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import MenuItem from 'material-ui/MenuItem';
+import Drawer from 'material-ui/Drawer';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
-export default () => (
-    <div>
-        <nav className="navbar navbar-default navbar-static-top">
-            <div className="container-fluid">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="#">RaboTube</a>
-                </div>
+export default class Menu extends React.Component {
 
-                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul className="nav navbar-nav">
-                        <li>
-                            <Link href="/"><a>Home</a></Link>
-                        </li>
-                        <li>
-                            <Link href="/about"><a>About US</a></Link>
-                        </li>
-                    </ul>
-                    <form className="navbar-form navbar-right">
-                        <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Search" />
-                        </div>
-                        <button type="submit" className="btn btn-default">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </div>
-)
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false
+        };
+    }
+
+    handleToggle = () => this.setState({open: !this.state.open});
+
+
+    render() {
+        return (
+            <Toolbar>
+                <ToolbarGroup>
+                    <IconButton iconClassName="muidocs-icon-custom-dehaze" onTouchTap={this.handleToggle} >
+                        Menu
+                    </IconButton>
+                    <Drawer open={this.state.open}>
+                        <Link href="/">
+                            <MenuItem>Home</MenuItem>
+                        </Link>
+                        <Link href="/about">
+                            <MenuItem>About</MenuItem>
+                        </Link>
+                    </Drawer>
+                </ToolbarGroup>
+                <ToolbarGroup>
+                    <IconMenu
+                        iconButtonElement={
+                            <IconButton touch={true}>
+                                <NavigationExpandMoreIcon />
+                            </IconButton>
+                        }
+                    >
+                        <MenuItem primaryText="Download" />
+                        <MenuItem primaryText="More Info" />
+                    </IconMenu>
+                </ToolbarGroup>
+            </Toolbar>
+        );
+    }
+}

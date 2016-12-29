@@ -7,9 +7,17 @@ exports = module.exports = class {
         this.handler = app.getRequestHandler();
         this.render = new (require('../cache/render'))(app, server.get('ssrCache'));
 
+        // Middleware
+        server.use(function(req, res, next) {
+            global.navigator = {
+                userAgent: req.headers['user-agent']
+            };
+            next();
+        });
+
         // Use the `renderAndCache` utility defined below to serve pages
         server.get('/', (req, res) => {
-            this.render.hit(req, res, '/')
+            this.render.hit(req, res, '/', { header: req.header('user-agent') })
         });
 
         server.get('*', (req, res) => {

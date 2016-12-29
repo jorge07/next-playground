@@ -10,6 +10,8 @@
   "dependencies": {
     "express": "^4.14.0",
     "lru-cache": "^4.0.2",
-    "next": "^2.0.0-beta"
+    "material-ui": "^0.16.6",
+    "next": "^2.0.0-beta",
+    "react-tap-event-plugin": "^2.0.1"
   }
 }

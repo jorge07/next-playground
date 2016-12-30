@@ -1,9 +1,7 @@
 RUN
 ===
 
-    yarn install
-    
-    yarn start
+    yarn install && yarn start
     
 Lol
 
